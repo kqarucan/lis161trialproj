@@ -9,7 +9,7 @@ def connect_to_db(path):
 
 def read_mems_by_mem_type(bang_mem):
     conn, cur = connect_to_db(db_path)
-    query = 'SELECT * FROM membio WHERE line_type = ?'
+    query = 'SELECT * FROM membio WHERE line_type COLLATE NOCASE = ?'
     value = (bang_mem,)  # Wrap the value in a tuple
     cur.execute(query, value)  # Pass the tuple directly as the second argument
     results = cur.fetchall()  # Use fetchall() instead of fetchone()
